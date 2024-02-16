@@ -254,6 +254,11 @@ document
   .getElementsByTagName("input")[0]
   .addEventListener("change", (e) => {
     currentSong.volume = parseInt(e.target.value) / 100;
+    if (currentSong.volume > 0) {
+      document.querySelector(".volume img").src = document
+        .querySelector(".volume img")
+        .src.replace("mute.svg", "volume.svg");
+    }
   });
 
 document.querySelector(".volume img").addEventListener("click", (e) => {
@@ -265,7 +270,9 @@ document.querySelector(".volume img").addEventListener("click", (e) => {
   } else {
     e.target.src = e.target.src.replace("mute.svg", "volume.svg");
     currentSong.volume = 0.5;
-    document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
+    document
+      .querySelector(".range")
+      .getElementsByTagName("input")[0].value = 10;
   }
 });
 
